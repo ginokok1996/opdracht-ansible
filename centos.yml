@@ -23,4 +23,7 @@
       name:
         - docker-ce
       state: present
-  
+  - name: get docker version
+    shell: "docker -v"
+    register: version
+  - debug: var=version.stdout
