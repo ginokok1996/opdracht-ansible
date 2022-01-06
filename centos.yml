@@ -4,22 +4,23 @@
   become: true
 
   tasks:
-  - name: Install yum-utils
+  - name: Install yum utils
     yum:
-      name: yum-utils
-      state: present
-  - name: add docker-ce repository
+        name: 
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: latest
+
+  - name: creating a docker repository
     yum_repository:
-      name: docker-ce
-      description: Docker-ce repository
-      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
-      gpgkey: https://download.docker.com/linux/centos/gpg
-      gpgcheck: yes
-  - name: install docker-ce, docker-ce-cli, containerd.io
+         description: repo for docker
+         name: docker-ce
+         baseurl: https://download.docker.com/linux/centos/8/x86_64/stable/
+         gpgcheck: no
+  - name: install docker-ce
     yum:
       name:
         - docker-ce
-        - docker-ce-cli
-        - containerd.io
       state: present
   
