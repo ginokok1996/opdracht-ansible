@@ -1,0 +1,25 @@
+---
+- name: Install Docker
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Install yum-utils
+    yum:
+      name: yum-utils
+      state: present
+  - name: add docker-ce repository
+    yum_repository:
+      name: docker-ce
+      description: Docker-ce repository
+      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+      gpgkey: https://download.docker.com/linux/centos/gpg
+      gpgcheck: yes
+  - name: install docker-ce, docker-ce-cli, containerd.io
+    yum:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      state: present
+  
