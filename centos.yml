@@ -11,7 +11,6 @@
         - device-mapper-persistent-data
         - lvm2
       state: latest
-
   - name: creating a docker repository
     yum_repository:
       description: repo for docker
