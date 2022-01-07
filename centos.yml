@@ -27,3 +27,8 @@
     shell: "docker -v"
     register: version
   - debug: var=version.stdout
+  - name: Start Docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes
