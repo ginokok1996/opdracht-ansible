@@ -8,8 +8,6 @@
     yum:
       name: 
         - yum-utils
-        - device-mapper-persistent-data
-        - lvm2
       state: latest
   - name: creating a docker repository
     yum_repository:
@@ -22,6 +20,8 @@
     yum:
       name:
         - docker-ce
+        - docker-ce-cli
+        - containerd.io
       state: present
   - name: get docker version
     shell: "docker -v"
